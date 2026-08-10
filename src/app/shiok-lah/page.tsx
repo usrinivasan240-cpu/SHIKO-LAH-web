@@ -8,77 +8,61 @@ export default function ShiokLahPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative min-h-[80vh] flex items-center bg-shiok-900 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-shiok-800 via-shiok-900 to-dark-900 opacity-95" />
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.3'%3E%3Cpath d='M0 20L20 0l20 20-20 20z'/%3E%3C/g%3E%3C/svg%3E")`,
-          }} />
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-dark-900">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=1600&q=80"
+            alt="Shiok Lah"
+            className="w-full h-full object-cover opacity-40"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-dark-900 via-dark-900/90 to-dark-900/50" />
         </div>
-        <div className="relative section-padding py-32 w-full">
-          <div className="max-w-5xl mx-auto">
-            <div className="inline-flex items-center gap-3 mb-6">
-              <div className="w-12 h-px bg-shiok-400" />
-              <span className="text-xs font-body font-semibold tracking-[0.4em] uppercase text-shiok-300">
-                Non-Vegetarian Cuisine
-              </span>
-            </div>
-            <h1 className="font-display text-display-lg md:text-display-xl text-cream-50 mb-6">
-              SHIOK LAH
-            </h1>
-            <p className="text-xl md:text-2xl font-display text-shiok-300 mb-8">
-              South East Asian Non-Vegetarian Cuisine
-            </p>
-            <p className="text-lg font-body text-cream-200 max-w-2xl leading-relaxed mb-10">
-              A destination for bold Southeast Asian flavours. Shiok Lah brings you the authentic tastes of Singapore, Malaysia and Thailand — with Chicken, Mutton, Fish and Prawns prepared with intense marinades, balanced spices and generous portions.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/menu?brand=shiok" className="btn-primary group">
-                View Menu
-                <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link href="/contact" className="btn-outline border-cream-200 text-cream-200 hover:bg-cream-200 hover:text-shiok-800">
-                Reserve a Table
-              </Link>
-            </div>
+        <div className="relative max-w-[1200px] mx-auto px-6 md:px-10 lg:px-16 py-32 w-full">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <div className="w-12 h-px bg-gold-400" />
+            <span className="text-[11px] font-body font-semibold tracking-[0.4em] uppercase text-gold-400">
+              Non-Vegetarian Cuisine
+            </span>
+          </div>
+          <h1 className="font-display text-[3rem] md:text-[4rem] text-cream-50 mb-4 leading-tight">
+            SHIOK LAH
+          </h1>
+          <p className="text-xl font-display text-gold-400 mb-8">
+            South East Asian Non-Vegetarian Cuisine
+          </p>
+          <p className="text-base font-body text-cream-200/80 max-w-xl leading-relaxed mb-10">
+            A destination for bold Southeast Asian flavours. Chicken, Mutton, Fish and Prawns prepared with intense marinades, balanced spices and generous portions.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link href="/menu?brand=shiok" className="px-8 py-3.5 bg-shiok-600 text-white text-[11px] font-body font-semibold tracking-[0.2em] uppercase hover:bg-shiok-700 transition-colors inline-flex items-center gap-2">
+              View Menu
+              <ArrowRight size={14} />
+            </Link>
+            <Link href="/contact" className="px-8 py-3.5 border border-cream-200/30 text-cream-200 text-[11px] font-body font-semibold tracking-[0.2em] uppercase hover:bg-cream-200/10 transition-colors">
+              Reserve a Table
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Highlights */}
       <section className="section-padding py-24 bg-cream-50">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-16">
-            <p className="text-xs font-body font-semibold tracking-[0.3em] uppercase text-shiok-500 mb-4">
-              Our Specialities
-            </p>
-            <h2 className="font-display text-display-md md:text-display-lg text-dark-800 mb-6">
+            <h2 className="font-display text-[2rem] md:text-[2.5rem] text-dark-800 mb-4">
               Bold South East Asian Flavours
             </h2>
-            <div className="divider-shiok mx-auto" />
+            <div className="w-16 h-0.5 bg-gold-400 mx-auto" />
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              {
-                title: 'Singaporean',
-                description: 'Nasi Goreng, Mee Goreng, Laksa, Satay, Hokkien Mee and Hainanese Chicken Rice — authentic hawker-style flavours.',
-                icon: <Utensils size={32} />,
-              },
-              {
-                title: 'Malaysian & Thai',
-                description: 'Mamak Mee Goreng, Tom Yum, Thai Basil Chicken, Cuka dishes and stir-fried favourites with bold Southeast Asian spices.',
-                icon: <Flame size={32} />,
-              },
-              {
-                title: 'Western Favourites',
-                description: 'Pasta, Burgers, Hot Dogs, Aglio Olio and more — prepared with our signature Southeast Asian touch.',
-                icon: <ChefHat size={32} />,
-              },
+              { title: 'Singaporean', description: 'Nasi Goreng, Mee Goreng, Laksa, Satay, Hokkien Mee and Hainanese Chicken Rice.', icon: <Utensils size={28} /> },
+              { title: 'Malaysian & Thai', description: 'Mamak Mee Goreng, Tom Yum, Thai Basil Chicken, Cuka dishes with bold spices.', icon: <Flame size={28} /> },
+              { title: 'Western Favourites', description: 'Pasta, Burgers, Hot Dogs, Aglio Olio and more with our signature touch.', icon: <ChefHat size={28} /> },
             ].map((item, i) => (
-              <div key={i} className="p-8 bg-white border-l-4 border-l-shiok-600 hover:shadow-lg transition-shadow duration-300">
+              <div key={i} className="p-8 bg-white border-l-4 border-l-shiok-600 hover:shadow-lg transition-shadow">
                 <div className="text-shiok-600 mb-4">{item.icon}</div>
-                <h3 className="font-display text-display-xs text-dark-800 mb-3">{item.title}</h3>
+                <h3 className="font-display text-lg text-dark-800 mb-3">{item.title}</h3>
                 <p className="text-sm text-dark-500 font-body leading-relaxed">{item.description}</p>
               </div>
             ))}
@@ -87,35 +71,24 @@ export default function ShiokLahPage() {
       </section>
 
       {/* Protein Focus */}
-      <section className="section-padding py-24 bg-shiok-800">
-        <div className="max-w-7xl mx-auto">
+      <section className="section-padding py-24 bg-dark-800">
+        <div className="max-w-[1200px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="relative h-96 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=800&q=80" alt="Premium Dining" className="w-full h-full object-cover" />
+            </div>
             <div>
-              <p className="text-xs font-body font-semibold tracking-[0.3em] uppercase text-shiok-300 mb-4">
-                Premium Proteins
-              </p>
-              <h2 className="font-display text-display-md text-cream-50 mb-6">
-                Chicken, Mutton, Fish & Prawns
-              </h2>
-              <p className="text-cream-200 font-body leading-relaxed mb-8">
-                Every dish at Shiok Lah is built around premium non-vegetarian ingredients. From tender chicken and succulent mutton to fresh fish and juicy prawns — each protein is treated with care, bold marinades and time-tested cooking techniques.
+              <p className="text-[11px] font-body font-semibold tracking-[0.3em] uppercase text-gold-400 mb-4">Premium Proteins</p>
+              <h2 className="font-display text-[2rem] text-cream-50 mb-6">Chicken, Mutton, Fish & Prawns</h2>
+              <p className="text-cream-200/70 font-body leading-relaxed mb-8">
+                Every dish is built around premium non-vegetarian ingredients. From tender chicken and succulent mutton to fresh fish and juicy prawns.
               </p>
               <div className="grid grid-cols-2 gap-4">
-                {['Chicken', 'Mutton', 'Fish', 'Prawns'].map((protein) => (
-                  <div key={protein} className="bg-shiok-700/50 px-4 py-3 text-center">
-                    <span className="text-sm font-body font-semibold text-cream-100 tracking-wider uppercase">
-                      {protein}
-                    </span>
+                {['Chicken', 'Mutton', 'Fish', 'Prawns'].map((p) => (
+                  <div key={p} className="bg-dark-700 px-4 py-3 text-center">
+                    <span className="text-sm font-body font-semibold text-cream-100 tracking-wider uppercase">{p}</span>
                   </div>
                 ))}
-              </div>
-            </div>
-            <div className="relative h-96 bg-shiok-700 overflow-hidden">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <Utensils size={64} className="text-shiok-300 mx-auto mb-4" />
-                  <p className="text-shiok-300 font-display text-lg">Premium Dining</p>
-                </div>
               </div>
             </div>
           </div>
@@ -123,23 +96,13 @@ export default function ShiokLahPage() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding py-20 bg-dark-800">
+      <section className="section-padding py-20 bg-shiok-600">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-display text-display-md text-cream-50 mb-6">
-            Ready for Bold Flavours?
-          </h2>
-          <p className="text-cream-300 font-body text-lg mb-10">
-            Explore the full Shiok Lah menu and discover your new favourite dish.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/menu?brand=shiok" className="btn-primary group">
-              View Full Menu
-              <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link href="/nirmalya-veg" className="btn-outline border-cream-300 text-cream-300 hover:bg-cream-300 hover:text-dark-800">
-              Explore Nirmalya Veg
-            </Link>
-          </div>
+          <h2 className="font-display text-[2rem] text-cream-50 mb-6">Ready for Bold Flavours?</h2>
+          <Link href="/menu?brand=shiok" className="px-8 py-3.5 bg-dark-800 text-cream-50 text-[11px] font-body font-semibold tracking-[0.2em] uppercase hover:bg-dark-900 transition-colors inline-flex items-center gap-2">
+            View Full Menu
+            <ArrowRight size={14} />
+          </Link>
         </div>
       </section>
     </>
