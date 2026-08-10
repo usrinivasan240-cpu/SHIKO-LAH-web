@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
-import LionLogo from '@/components/ui/LionLogo'
+import BrandLogo from '@/components/ui/BrandLogo'
 
 const brands = [
   {
@@ -14,8 +14,7 @@ const brands = [
     href: '/shiok-lah',
     menuHref: '/menu?brand=shiok',
     bgColor: 'from-shiok-800 via-shiok-900 to-dark-900',
-    textColor: 'text-gold-400',
-    borderColor: 'border-gold-400/30',
+    brand: 'shiok' as const,
   },
   {
     id: 'nirmalya',
@@ -26,8 +25,7 @@ const brands = [
     href: '/nirmalya-veg',
     menuHref: '/menu?brand=nirmalya',
     bgColor: 'from-nirmalya-800 via-nirmalya-900 to-dark-900',
-    textColor: 'text-nirmalya-300',
-    borderColor: 'border-nirmalya-300/30',
+    brand: 'nirmalya' as const,
   },
 ]
 
@@ -54,9 +52,7 @@ export default function BrandCards() {
           <h2 className="font-display text-[2rem] md:text-[2.5rem] text-dark-800 mb-3 leading-tight">
             TWO UNIQUE EXPERIENCES
           </h2>
-          <p className="text-sm font-body text-dark-400 italic">
-            Choose your flavour journey
-          </p>
+          <p className="text-sm font-body text-dark-400 italic">Choose your flavour journey</p>
           <div className="w-16 h-0.5 bg-gold-400 mx-auto mt-6" />
         </div>
 
@@ -72,24 +68,21 @@ export default function BrandCards() {
             >
               {/* Background Image */}
               <div className={`absolute inset-0 bg-gradient-to-b ${brand.bgColor}`}>
-                <img
-                  src={brand.bgImage}
-                  alt={brand.name}
-                  className="w-full h-full object-cover opacity-30 mix-blend-overlay"
-                  loading="lazy"
-                />
+                <img src={brand.bgImage} alt={brand.name} className="w-full h-full object-cover opacity-30 mix-blend-overlay" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/80 to-transparent" />
               </div>
 
               {/* Content */}
               <div className="relative p-10 md:p-12 min-h-[420px] flex flex-col">
-                {/* Lion Logo */}
+                {/* Logo */}
                 <div className="mb-8">
-                  <LionLogo color="#C9A84C" size={56} />
+                  <BrandLogo brand={brand.brand} size={80} />
                 </div>
 
                 {/* Brand Name */}
-                <h3 className="font-display text-[2rem] md:text-[2.25rem] text-gold-400 mb-2 tracking-wide">
+                <h3 className={`font-display text-[2rem] md:text-[2.25rem] mb-2 tracking-wide ${
+                  brand.brand === 'shiok' ? 'text-gold-400' : 'text-nirmalya-400'
+                }`}>
                   {brand.name}
                 </h3>
                 <p className="text-[11px] font-body font-semibold tracking-[0.2em] uppercase text-cream-200/60 mb-6">

@@ -2,34 +2,21 @@
 
 import React from 'react'
 import Link from 'next/link'
-import LionLogo from '@/components/ui/LionLogo'
+import BrandLogo from '@/components/ui/BrandLogo'
 import { Phone, Mail, MapPin, Instagram, Facebook, MessageCircle } from 'lucide-react'
 
 export default function Footer() {
   return (
     <footer className="bg-dark-800 text-cream-100">
-      {/* Main Footer */}
       <div className="max-w-[1200px] mx-auto px-6 md:px-10 lg:px-16 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand Column */}
           <div className="lg:col-span-2">
             <div className="mb-6">
-              <div className="flex items-center gap-3 mb-2">
-                <LionLogo color="#C9A84C" size={36} />
-                <div>
-                  <h3 className="font-display text-xl font-bold text-cream-50">SHIOK LAH</h3>
-                  <p className="text-[8px] font-body tracking-[0.2em] uppercase text-gold-400">South East Asian Cuisine</p>
-                </div>
-              </div>
+              <BrandLogo brand="shiok" size={50} withText />
             </div>
             <div className="mb-6">
-              <div className="flex items-center gap-3 mb-2">
-                <LionLogo color="#4DA64D" size={36} />
-                <div>
-                  <h3 className="font-display text-xl font-bold text-cream-50">NIRMALYA VEG</h3>
-                  <p className="text-[8px] font-body tracking-[0.2em] uppercase text-nirmalya-400">South East Asian Vegetarian Cuisine</p>
-                </div>
-              </div>
+              <BrandLogo brand="nirmalya" size={50} withText />
             </div>
             <p className="text-xs text-cream-300/60 leading-relaxed max-w-sm mt-4">
               Two premium South East Asian dining experiences in Trichy, bringing authentic Singaporean, Malaysian and Thai-inspired flavours.
@@ -38,9 +25,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-display text-sm font-semibold text-cream-50 mb-5 tracking-wide">
-              Quick Links
-            </h4>
+            <h4 className="font-display text-sm font-semibold text-cream-50 mb-5 tracking-wide">Quick Links</h4>
             <ul className="space-y-2.5">
               {[
                 { label: 'Home', href: '/' },
@@ -52,9 +37,7 @@ export default function Footer() {
                 { label: 'Contact', href: '/contact' },
               ].map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-xs text-cream-300/60 hover:text-gold-400 transition-colors duration-200">
-                    {link.label}
-                  </Link>
+                  <Link href={link.href} className="text-xs text-cream-300/60 hover:text-gold-400 transition-colors">{link.label}</Link>
                 </li>
               ))}
             </ul>
@@ -62,15 +45,11 @@ export default function Footer() {
 
           {/* Shiok Lah Menu */}
           <div>
-            <h4 className="font-display text-sm font-semibold text-gold-400 mb-5 tracking-wide">
-              Shiok Lah Menu
-            </h4>
+            <h4 className="font-display text-sm font-semibold text-gold-400 mb-5 tracking-wide">Shiok Lah Menu</h4>
             <ul className="space-y-2.5">
               {['Starters & Soups', 'Singapore Special', 'Rice', 'Noodles', 'Dry Fries', 'Western Favourites', 'Sides'].map((item) => (
                 <li key={item}>
-                  <Link href="/menu?brand=shiok" className="text-xs text-cream-300/60 hover:text-gold-400 transition-colors duration-200">
-                    {item}
-                  </Link>
+                  <Link href="/menu?brand=shiok" className="text-xs text-cream-300/60 hover:text-gold-400 transition-colors">{item}</Link>
                 </li>
               ))}
             </ul>
@@ -78,15 +57,11 @@ export default function Footer() {
 
           {/* Nirmalya Veg Menu */}
           <div>
-            <h4 className="font-display text-sm font-semibold text-nirmalya-400 mb-5 tracking-wide">
-              Nirmalya Veg Menu
-            </h4>
+            <h4 className="font-display text-sm font-semibold text-nirmalya-400 mb-5 tracking-wide">Nirmalya Veg Menu</h4>
             <ul className="space-y-2.5">
               {['Starters & Soups', 'Singapore Special', 'Rice', 'Noodles', 'Dry Fries', 'Western Favourites', 'Sides'].map((item) => (
                 <li key={item}>
-                  <Link href="/menu?brand=nirmalya" className="text-xs text-cream-300/60 hover:text-nirmalya-400 transition-colors duration-200">
-                    {item}
-                  </Link>
+                  <Link href="/menu?brand=nirmalya" className="text-xs text-cream-300/60 hover:text-nirmalya-400 transition-colors">{item}</Link>
                 </li>
               ))}
             </ul>
@@ -97,9 +72,7 @@ export default function Footer() {
         <div className="mt-12 pt-8 border-t border-dark-700">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div>
-              <h4 className="font-display text-sm font-semibold text-cream-50 mb-4 tracking-wide">
-                Contact Us
-              </h4>
+              <h4 className="font-display text-sm font-semibold text-cream-50 mb-4 tracking-wide">Contact Us</h4>
               <div className="space-y-3">
                 <a href="tel:+91XXXXXXXXXX" className="flex items-center gap-2 text-xs text-cream-300/60 hover:text-cream-50 transition-colors">
                   <Phone size={14} className="text-gold-400" />
@@ -116,22 +89,15 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Follow Us */}
             <div>
-              <h4 className="font-display text-sm font-semibold text-cream-50 mb-4 tracking-wide">
-                Follow Us
-              </h4>
+              <h4 className="font-display text-sm font-semibold text-cream-50 mb-4 tracking-wide">Follow Us</h4>
               <div className="flex gap-3">
                 {[
                   { icon: <Instagram size={16} />, href: '#' },
                   { icon: <Facebook size={16} />, href: '#' },
                   { icon: <MessageCircle size={16} />, href: '#' },
                 ].map((social, i) => (
-                  <a
-                    key={i}
-                    href={social.href}
-                    className="w-9 h-9 border border-dark-600 flex items-center justify-center text-cream-300/60 hover:text-gold-400 hover:border-gold-400 transition-all"
-                  >
+                  <a key={i} href={social.href} className="w-9 h-9 border border-dark-600 flex items-center justify-center text-cream-300/60 hover:text-gold-400 hover:border-gold-400 transition-all">
                     {social.icon}
                   </a>
                 ))}

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Menu, X, Phone, ChevronDown, ShoppingBag } from 'lucide-react'
-import LionLogo from '@/components/ui/LionLogo'
+import BrandLogo from '@/components/ui/BrandLogo'
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -46,12 +46,12 @@ export default function Header() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3">
-              <LionLogo color="#C9A84C" size={42} />
+              <BrandLogo brand="shiok" size={50} />
               <div className="flex flex-col">
-                <span className="text-[18px] font-display font-bold text-cream-50 tracking-wide">
+                <span className="text-[18px] font-display font-bold text-gold-400 tracking-wide">
                   SHIOK LAH
                 </span>
-                <span className="text-[8px] font-body tracking-[0.25em] uppercase text-gold-400 -mt-0.5">
+                <span className="text-[8px] font-body tracking-[0.25em] uppercase text-gold-400/60 -mt-0.5">
                   South East Asian Cuisine
                 </span>
               </div>
@@ -78,7 +78,7 @@ export default function Header() {
                       <Link href="/menu?brand=shiok" className="block px-4 py-2.5 text-xs font-body text-cream-200 hover:text-gold-400 hover:bg-dark-700 transition-colors">
                         Shiok Lah Menu
                       </Link>
-                      <Link href="/menu?brand=nirmalya" className="block px-4 py-2.5 text-xs font-body text-cream-200 hover:text-gold-400 hover:bg-dark-700 transition-colors">
+                      <Link href="/menu?brand=nirmalya" className="block px-4 py-2.5 text-xs font-body text-cream-200 hover:text-nirmalya-400 hover:bg-dark-700 transition-colors">
                         Nirmalya Veg Menu
                       </Link>
                       <Link href="/menu" className="block px-4 py-2.5 text-xs font-body text-cream-200 hover:text-gold-400 hover:bg-dark-700 transition-colors">
@@ -127,9 +127,7 @@ export default function Header() {
           <div className="absolute inset-0 bg-dark-900/70 backdrop-blur-sm" onClick={() => setIsOpen(false)} />
           <div className="absolute right-0 top-0 h-full w-full max-w-sm bg-dark-800 shadow-2xl">
             <div className="flex items-center justify-between p-6 border-b border-dark-700">
-              <span className="text-[10px] font-body font-semibold tracking-[0.3em] uppercase text-cream-300">
-                Navigation
-              </span>
+              <BrandLogo brand="shiok" size={36} />
               <button onClick={() => setIsOpen(false)} className="p-2 text-cream-200">
                 <X size={20} />
               </button>
