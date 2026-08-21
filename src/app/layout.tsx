@@ -3,20 +3,20 @@ import './globals.css'
 import ClientLayout from '@/components/layout/ClientLayout'
 
 export const metadata: Metadata = {
-  title: 'Shiok Lah & Nirmalya Veg — South East Asian Restaurant, Trichy',
-  description: 'Premium South East Asian non-vegetarian and vegetarian cuisine in Trichy. Singaporean, Malaysian and Thai-inspired flavours at Shiok Lah and Nirmalya Veg.',
+  title: 'Nirmalya Pure Veg — Taste of Singapore | Trichy',
+  description: 'Nirmalya Pure Veg brings Singapore-inspired vegetarian flavours to Trichy, Tamil Nadu.',
   keywords: [
-    'Shiok Lah Trichy',
     'Nirmalya Veg Trichy',
-    'South East Asian restaurant Trichy',
-    'Singaporean food Trichy',
-    'Malaysian food Trichy',
-    'Thai food Trichy',
-    'Vegetarian Singaporean food Trichy',
-    'Non-vegetarian restaurant Trichy',
+    'Nirmalya Pure Veg',
+    'Singaporean vegetarian food Trichy',
+    'South East Asian vegetarian restaurant Trichy',
     'Woraiyur restaurants',
-    'Singaporean restaurant Trichy',
   ],
+  icons: {
+    icon: '/nirmalya-logo.svg',
+    shortcut: '/nirmalya-logo.svg',
+    apple: '/nirmalya-logo.svg',
+  },
 }
 
 export default function RootLayout({
