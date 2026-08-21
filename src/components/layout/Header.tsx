@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Menu, X, Phone, ChevronDown, ShoppingBag } from 'lucide-react'
+import { Menu, X, Phone, ChevronDown, ShoppingBag, MapPin } from 'lucide-react'
 import BrandLogo from '@/components/ui/BrandLogo'
 
 const navLinks = [
@@ -21,145 +21,71 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50)
+    const handleScroll = () => setScrolled(window.scrollY > 24)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
+    document.body.style.overflow = isOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [isOpen])
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'bg-dark-900/95 backdrop-blur-md shadow-[0_2px_20px_rgba(0,0,0,0.3)]'
-          : 'bg-gradient-to-b from-dark-900/80 to-transparent'
-      }`}>
-        <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16">
-          <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-3">
-              <BrandLogo brand="shiok" size={50} />
-              <div className="flex flex-col">
-                <span className="text-[18px] font-display font-bold text-gold-400 tracking-wide">
-                  SHIOK LAH
-                </span>
-                <span className="text-[8px] font-body tracking-[0.25em] uppercase text-gold-400/60 -mt-0.5">
-                  South East Asian Cuisine
-                </span>
-              </div>
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-cream-50/95 backdrop-blur-xl border-b border-dark-900/10 shadow-[0_8px_35px_rgba(30,24,21,.08)]' : 'bg-cream-50/85 backdrop-blur-md'}`}>
+        <div className="max-w-[1400px] mx-auto px-5 md:px-10 lg:px-16">
+          <div className="flex items-center justify-between h-[76px]">
+            <Link href="/" className="flex items-center gap-3" aria-label="Shiok Lah home">
+              <BrandLogo brand="shiok" size={43} withText />
             </Link>
 
-            {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-1">
+            <nav className="hidden lg:flex items-center gap-0.5" aria-label="Main navigation">
               {navLinks.map((link) => (
-                <div
-                  key={link.href}
-                  className="relative"
-                  onMouseEnter={() => link.hasDropdown && setMenuOpen(true)}
-                  onMouseLeave={() => link.hasDropdown && setMenuOpen(false)}
-                >
-                  <Link
-                    href={link.href}
-                    className="flex items-center gap-1 px-4 py-2 text-[12px] font-body font-medium tracking-[0.15em] uppercase text-cream-200 hover:text-gold-400 transition-colors duration-200"
-                  >
-                    {link.label}
-                    {link.hasDropdown && <ChevronDown size={12} />}
+                <div key={link.href} className="relative" onMouseEnter={() => link.hasDropdown && setMenuOpen(true)} onMouseLeave={() => link.hasDropdown && setMenuOpen(false)}>
+                  <Link href={link.href} className="flex items-center gap-1 px-3.5 py-2.5 rounded-full text-[11px] font-body font-semibold tracking-[0.12em] uppercase text-dark-700 hover:text-shiok-600 hover:bg-white/70 transition-all">
+                    {link.label}{link.hasDropdown && <ChevronDown size={12} />}
                   </Link>
                   {link.hasDropdown && menuOpen && (
-                    <div className="absolute top-full left-0 bg-dark-800 border border-dark-700 shadow-xl min-w-[200px] py-2">
-                      <Link href="/menu?brand=shiok" className="block px-4 py-2.5 text-xs font-body text-cream-200 hover:text-gold-400 hover:bg-dark-700 transition-colors">
-                        Shiok Lah Menu
-                      </Link>
-                      <Link href="/menu?brand=nirmalya" className="block px-4 py-2.5 text-xs font-body text-cream-200 hover:text-nirmalya-400 hover:bg-dark-700 transition-colors">
-                        Nirmalya Veg Menu
-                      </Link>
-                      <Link href="/menu" className="block px-4 py-2.5 text-xs font-body text-cream-200 hover:text-gold-400 hover:bg-dark-700 transition-colors">
-                        View All
-                      </Link>
+                    <div className="absolute top-[calc(100%+8px)] left-0 bg-white border border-dark-900/10 shadow-2xl rounded-2xl min-w-[220px] p-2">
+                      <Link href="/menu?brand=shiok" className="block rounded-xl px-4 py-3 text-xs font-body font-semibold text-dark-700 hover:bg-shiok-50 hover:text-shiok-700">Shiok Lah Menu</Link>
+                      <Link href="/menu?brand=nirmalya" className="block rounded-xl px-4 py-3 text-xs font-body font-semibold text-dark-700 hover:bg-nirmalya-50 hover:text-nirmalya-700">Nirmalya Veg Menu</Link>
+                      <Link href="/menu" className="block rounded-xl px-4 py-3 text-xs font-body font-semibold text-dark-700 hover:bg-cream-100">View All Menus</Link>
                     </div>
                   )}
                 </div>
               ))}
             </nav>
 
-            {/* Right Side */}
-            <div className="hidden lg:flex items-center gap-4">
-              <Link
-                href="/order"
-                className="flex items-center gap-2 px-6 py-2.5 border border-gold-400 text-gold-400 text-[11px] font-body font-semibold tracking-[0.2em] uppercase hover:bg-gold-400 hover:text-dark-900 transition-all duration-300"
-              >
-                <ShoppingBag size={14} />
-                Order Now
+            <div className="hidden lg:flex items-center gap-2">
+              <Link href="/location" className="p-2.5 text-dark-600 hover:text-shiok-600" aria-label="Location"><MapPin size={18} /></Link>
+              <Link href="/order" className="flex items-center gap-2 rounded-full px-5 py-2.5 bg-shiok-600 text-white text-[11px] font-body font-bold tracking-[0.12em] uppercase hover:bg-shiok-700 hover:-translate-y-0.5 transition-all shadow-lg shadow-shiok-600/15">
+                <ShoppingBag size={14} /> Order Now
               </Link>
             </div>
 
-            {/* Mobile Menu Button */}
-            <div className="flex lg:hidden items-center gap-3">
-              <Link
-                href="/order"
-                className="px-4 py-2 border border-gold-400 text-gold-400 text-[10px] font-body font-semibold tracking-wider uppercase"
-              >
-                Order
-              </Link>
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="p-2 text-cream-100"
-                aria-label="Toggle menu"
-              >
-                {isOpen ? <X size={22} /> : <Menu size={22} />}
-              </button>
+            <div className="flex lg:hidden items-center gap-2">
+              <Link href="/order" className="rounded-full px-4 py-2 bg-shiok-600 text-white text-[10px] font-body font-bold tracking-wider uppercase">Order</Link>
+              <button onClick={() => setIsOpen(!isOpen)} className="p-2 text-dark-800" aria-label="Toggle menu" aria-expanded={isOpen}>{isOpen ? <X size={23} /> : <Menu size={23} />}</button>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden">
-          <div className="absolute inset-0 bg-dark-900/70 backdrop-blur-sm" onClick={() => setIsOpen(false)} />
-          <div className="absolute right-0 top-0 h-full w-full max-w-sm bg-dark-800 shadow-2xl">
-            <div className="flex items-center justify-between p-6 border-b border-dark-700">
-              <BrandLogo brand="shiok" size={36} />
-              <button onClick={() => setIsOpen(false)} className="p-2 text-cream-200">
-                <X size={20} />
-              </button>
+        <div className="fixed inset-0 z-[60] lg:hidden">
+          <div className="absolute inset-0 bg-dark-900/50 backdrop-blur-sm" onClick={() => setIsOpen(false)} />
+          <div className="absolute right-0 top-0 h-full w-full max-w-sm bg-cream-50 shadow-2xl p-6 overflow-y-auto">
+            <div className="flex items-center justify-between pb-5 border-b border-dark-900/10">
+              <BrandLogo brand="shiok" size={38} withText />
+              <button onClick={() => setIsOpen(false)} className="p-2 text-dark-700" aria-label="Close menu"><X size={22} /></button>
             </div>
-            <nav className="p-6">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="block py-3.5 text-sm font-body font-medium tracking-[0.15em] uppercase text-cream-200 hover:text-gold-400 border-b border-dark-700 transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
+            <nav className="py-5">
+              {navLinks.map((link) => <Link key={link.href} href={link.href} onClick={() => setIsOpen(false)} className="block py-4 border-b border-dark-900/10 text-sm font-body font-semibold tracking-[0.12em] uppercase text-dark-700">{link.label}</Link>)}
             </nav>
-            <div className="p-6 border-t border-dark-700">
-              <Link
-                href="/order"
-                className="flex items-center justify-center gap-2 w-full px-6 py-3.5 border border-gold-400 text-gold-400 text-xs font-body font-semibold tracking-wider uppercase hover:bg-gold-400 hover:text-dark-900 transition-colors mb-3"
-                onClick={() => setIsOpen(false)}
-              >
-                <ShoppingBag size={14} />
-                Order Now
-              </Link>
-              <a
-                href="tel:+91XXXXXXXXXX"
-                className="flex items-center justify-center gap-2 w-full px-6 py-3.5 bg-shiok-600 text-white text-xs font-body font-semibold tracking-wider uppercase hover:bg-shiok-700 transition-colors"
-              >
-                <Phone size={14} />
-                Call to Order
-              </a>
+            <div className="grid gap-3 pt-2">
+              <Link href="/order" onClick={() => setIsOpen(false)} className="flex items-center justify-center gap-2 rounded-full px-6 py-3.5 bg-shiok-600 text-white text-xs font-body font-bold uppercase tracking-wider"><ShoppingBag size={15} /> Order Now</Link>
+              <a href="tel:+91XXXXXXXXXX" className="flex items-center justify-center gap-2 rounded-full px-6 py-3.5 border border-shiok-600 text-shiok-600 text-xs font-body font-bold uppercase tracking-wider"><Phone size={15} /> Call Restaurant</a>
             </div>
           </div>
         </div>
