@@ -7,22 +7,16 @@ interface LogoProps {
   withText?: boolean
 }
 
-/**
- * Shared brand lockup.
- * Nirmalya intentionally uses the supplied master-logo composition as one
- * complete asset so the badge, lion, typography and curved tagline stay
- * identical everywhere in the application.
- */
-function NirmalyaMaster({ size, withText }: { size: number; withText: boolean }) {
-  const dimension = withText ? Math.max(size * 3.7, 190) : size
+/** Nirmalya uses the exact supplied master artwork as a single lockup. */
+function NirmalyaMaster({ size }: { size: number }) {
   return (
     <img
-      src="/nirmalya-master.svg"
-      width={dimension}
-      height={dimension}
+      src="/nirmalya-exact.svg"
+      width={size}
+      height={size}
       alt="Nirmalya Pure Veg — Taste of Singapore"
-      className="block object-contain"
-      style={{ width: withText ? dimension : size, height: withText ? dimension : size }}
+      className="block shrink-0 object-contain"
+      style={{ width: size, height: size }}
     />
   )
 }
@@ -36,11 +30,11 @@ function ShiokLion({ size }: { size: number }) {
   )
 }
 
-export default function BrandLogo({ brand, size = 40, className = '', withText = false }: LogoProps) {
+export default function BrandLogo({ brand, size = 40, className = '' }: LogoProps) {
   if (brand === 'nirmalya') {
     return (
       <span className={`inline-flex items-center shrink-0 ${className}`}>
-        <NirmalyaMaster size={size} withText={withText} />
+        <NirmalyaMaster size={size} />
       </span>
     )
   }
@@ -50,12 +44,10 @@ export default function BrandLogo({ brand, size = 40, className = '', withText =
       <span className="grid place-items-center shrink-0 rounded-full bg-cream-50" style={{ width: size, height: size }}>
         <ShiokLion size={size * 0.68} />
       </span>
-      {withText && (
-        <div className="flex flex-col leading-none">
-          <span className="font-display font-bold tracking-[0.035em] text-red-700" style={{ fontSize: Math.max(15, size * 0.36) }}>SHIOK LAH</span>
-          <span className="mt-1 font-body text-[7px] font-semibold tracking-[0.19em] uppercase whitespace-nowrap text-red-700/70">SOUTH EAST ASIAN CUISINE</span>
-        </div>
-      )}
+      <div className="flex flex-col leading-none">
+        <span className="font-display font-bold tracking-[0.035em] text-red-700" style={{ fontSize: Math.max(15, size * 0.36) }}>SHIOK LAH</span>
+        <span className="mt-1 font-body text-[7px] font-semibold tracking-[0.19em] uppercase whitespace-nowrap text-red-700/70">SOUTH EAST ASIAN CUISINE</span>
+      </div>
     </div>
   )
 }
