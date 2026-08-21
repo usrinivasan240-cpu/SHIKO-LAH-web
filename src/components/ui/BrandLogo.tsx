@@ -8,21 +8,22 @@ interface LogoProps {
 }
 
 /**
- * Brand lockup used everywhere in the application.
- * Nirmalya follows the supplied master logo reference:
- * warm orange circular badge, red lion mark, deep green wordmark,
- * and the exact PURE VEG · TASTE OF SINGAPORE descriptor.
+ * Shared brand lockup.
+ * Nirmalya intentionally uses the supplied master-logo composition as one
+ * complete asset so the badge, lion, typography and curved tagline stay
+ * identical everywhere in the application.
  */
-function NirmalyaLion({ size }: { size: number }) {
+function NirmalyaMaster({ size, withText }: { size: number; withText: boolean }) {
+  const dimension = withText ? Math.max(size * 3.7, 190) : size
   return (
-    <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden="true">
-      <g fill="none" stroke="#D71920" strokeLinecap="round" strokeLinejoin="round">
-        <path strokeWidth="10" d="M33 72c-5-9-5-22 1-31-2-9 2-18 11-23 9-5 20-4 27 3 7 1 12 5 15 11 3 7 1 15-4 20-4 4-9 6-15 6-4 8-11 14-19 17" />
-        <path strokeWidth="7" d="M42 32c9-6 18-8 27-6M37 42c10-4 20-4 29-1M37 52c10-2 19 0 27 5M39 61c9 0 17 3 23 9" />
-      </g>
-      <path fill="#D71920" d="M22 48c4-5 10-8 17-8l9 4-5 8-10 2-4 8-10-2c-2-4-1-8 3-12Z" />
-      <circle cx="31" cy="47" r="2.2" fill="#fff" />
-    </svg>
+    <img
+      src="/nirmalya-master.svg"
+      width={dimension}
+      height={dimension}
+      alt="Nirmalya Pure Veg — Taste of Singapore"
+      className="block object-contain"
+      style={{ width: withText ? dimension : size, height: withText ? dimension : size }}
+    />
   )
 }
 
@@ -36,33 +37,23 @@ function ShiokLion({ size }: { size: number }) {
 }
 
 export default function BrandLogo({ brand, size = 40, className = '', withText = false }: LogoProps) {
-  const isNirmalya = brand === 'nirmalya'
-  const primary = isNirmalya ? '#0B663B' : '#B52828'
-  const badge = isNirmalya ? '#F6B44A' : '#FFF7E7'
-  const mark = isNirmalya ? <NirmalyaLion size={size * 0.72} /> : <ShiokLion size={size * 0.68} />
+  if (brand === 'nirmalya') {
+    return (
+      <span className={`inline-flex items-center shrink-0 ${className}`}>
+        <NirmalyaMaster size={size} withText={withText} />
+      </span>
+    )
+  }
 
   return (
     <div className={`flex items-center gap-2.5 ${className}`}>
-      <span
-        className="grid place-items-center shrink-0 rounded-full"
-        style={{ width: size, height: size, background: badge }}
-      >
-        {mark}
+      <span className="grid place-items-center shrink-0 rounded-full bg-cream-50" style={{ width: size, height: size }}>
+        <ShiokLion size={size * 0.68} />
       </span>
       {withText && (
         <div className="flex flex-col leading-none">
-          <span
-            className="font-display font-bold tracking-[0.035em]"
-            style={{ color: primary, fontSize: Math.max(15, size * 0.36) }}
-          >
-            {isNirmalya ? 'NIRMALYA' : 'SHIOK LAH'}
-          </span>
-          <span
-            className="mt-1 font-body text-[7px] font-semibold tracking-[0.19em] uppercase whitespace-nowrap"
-            style={{ color: primary, opacity: 0.72 }}
-          >
-            {isNirmalya ? 'PURE VEG · TASTE OF SINGAPORE' : 'SOUTH EAST ASIAN CUISINE'}
-          </span>
+          <span className="font-display font-bold tracking-[0.035em] text-red-700" style={{ fontSize: Math.max(15, size * 0.36) }}>SHIOK LAH</span>
+          <span className="mt-1 font-body text-[7px] font-semibold tracking-[0.19em] uppercase whitespace-nowrap text-red-700/70">SOUTH EAST ASIAN CUISINE</span>
         </div>
       )}
     </div>
